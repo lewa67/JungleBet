@@ -1,0 +1,30 @@
+@media screen and (max-width: 640px) {
+    .bloc {
+      display:block;
+      clear:both;
+    }
+
+  
+
+   
+  }
+  .btn{
+    outline: none;
+  }
+
+  .bet{
+    top: 150px;
+    position: relative;
+  }
+  @media screen and (max-width: 750px){
+    .bet{
+        top: 200px;
+    }
+}
+  /* .respo{
+    display: none
+  } */
+  /* .champs{
+    position: sticky;
+    top: 120px;
+  } */

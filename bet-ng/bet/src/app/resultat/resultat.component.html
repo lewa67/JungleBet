@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row w-100">
+            <div class="col-md-3 champs">
+                    <div class="btn-group-vertical sticky-top">
+            <button type="button" class="btn btn-secondary bg-light" style="color: black">EUROPE</button>
+            <button type="button" class="btn btn-secondary" #button1 (click)="sort(button1.innerHTML)">Ligue 1</button>
+            <button type="button" class="btn btn-secondary" #button2 (click)="sort(button2.innerHTML)">Bundesliga</button>
+            <button type="button" class="btn btn-secondary" #button3 (click)="sort(button3.innerHTML)">Premier League</button>
+            <button type="button" class="btn btn-secondary"#button4 (click)="sort(button4.innerHTML)">Liga</button>
+            <button type="button" class="btn btn-secondary"#button5 (click)="sort(button5.innerHTML)">Serie A</button>
+            
+            <button type="button" class="btn btn-secondary bg-light" style="color: black">International</button>
+            
+            <button type="button" class="btn btn-secondary" #button6 (click)="sort(button6.innerHTML)">Champions League</button>
+                          </div>
+            
+            </div>
+
+            <div class="col-md-6"  style="background-color: rgba(250,250,250,0.8); border-radius: 5px; overflow-y: auto; height: 400px">
+                    <table class="table table-striped table-hover">
+                            <ng-container *ngFor="let date of dateOfMatches">
+                                    <thead>
+                                            <tr>
+                                                <th colspan="4">{{date}}</th>
+                                            </tr>
+                                        </thead><tr data-matchId="3111743" class="" *ngFor="let match of results">
+                                            <ng-container *ngIf="match.dateOfMatch==date">
+                                                    <td >Terminé</td>
+                                                    <td >
+                                                        {{match.teams[0]}} -  {{match.teams[1]}}
+                                                    </td>
+                                                    <td> {{match.score[0]}} -  {{match.score[1]}}</td>
+                                            </ng-container>
+                                            
+                                            </tr>
+                            </ng-container>
+                               
+                                    </table>
+            </div>
+    </div>
+
+</div>
+
+
+
+      

@@ -1,0 +1,181 @@
+<!-- <ul class="nav justify-content-center mb-5 d-flex" style="flex-direction: row;">
+    <li class="nav-item">
+      <a class="nav-link active" routerLink="bet">Paris Sportif</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="admin">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="actualite">Actualité</a>
+    </li>
+    <li class="nav-item mr-2">
+        <button type="button" class="btn btn-outline-primary" routerLink="auth" *ngIf="!isLogged()" (click)="setUser()">Login</button>
+      </li>
+      <li class="nav-item">
+          <button type="button" class="btn btn-outline-warning" routerLink="auth" *ngIf="!isLogged()">Register</button>
+        </li> 
+        <li class="nav-item">
+          <button type="button" class="btn btn-outline-warning" routerLink="auth" *ngIf="isLogged()" (click)="logout()">Logout</button>
+        </li> 
+       <H5 *ngIf="isLogged()">You are connected as: {{username}}</H5>
+  </ul> -->
+
+   <!-- OoooooooooooooooooFFFFFFFFFFFFFFFFIIIIIIIIIIICCCIAAAAAAAAAAAAAAAAAAAAAAALLLLLLLLLLL -->
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-dark mb-3 ">
+    
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src='../assets/image/logo1.png' alt="" style="height: 50px; width: 50px; border-radius: 30% "></a>
+  
+    
+    <div class="collapse navbar-collapse" id="navbarNav" >
+        <ul class="navbar-nav nav w-100">
+            
+            <li class="nav-item">
+              <a class="nav-link active text-light" routerLink="bet">Paris Sportif</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" routerLink="resultat">Résultat</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" routerLink="actualite">Actualité</a>
+            </li>
+            
+          </ul>
+            <ul class="navbar-nav nav w-100 ml-auto">
+                <H5  *ngIf="isLoggedIn$ | async" style="color: blanchedalmond">You are connected as: {{username$ | async}}</H5>
+                <li class="nav-item ml-auto">
+                    <button type="button" class="btn btn-outline-warning " routerLink="auth/login" *ngIf="isLoggedIn$ | async" (click)="logout()">Logout</button>
+                  </li> 
+                <li class="nav-item mr-2">
+                    <button type="button" class="btn btn-outline-primary ml-auto" routerLink="auth/login" *ngIf=" isLoggedOut$    | async"  (click)="loginPressed()">Login</button>
+                  </li>
+                  <li class="nav-item  px-0">
+                      <button type="button" class="btn btn-outline-warning ml-auto " routerLink="auth/register" *ngIf=" isLoggedOut$   | async" (click)="registerPressed()">Register</button>
+                    </li> 
+                    
+                   
+            </ul>
+              
+          </div>
+        </nav> -->
+    <!-- OoooooooooooooooooFFFFFFFFFFFFFFFFIIIIIIIIIIICCCIAAAAAAAAAAAAAAAAAAAAAAALLLLLLLLLLL -->
+      <!-- <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul> -->
+   
+  <div class="container-fluid" #nav>
+    
+      <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-transparent responsive-menu w-100">
+          <a class="logo"><img src='../assets/image/logo1.png' style="height: 50px; width: 50px; border-radius: 30% " alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float: left">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: right">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Accueil</a>
+              </li>
+              <li class="nav-item"> 
+                <a class="nav-link" href="#">A propos</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Services
+                </a>
+                <!-- bloc menu déroulant -->
+                <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Service 1</a>
+                  <a class="dropdown-item" href="#">Autre service action</a>
+                  <a class="dropdown-item" href="#">Dernier service</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </nav> --> 
+
+
+    <div class="div-nav">
+     <a class="logo"><img src='../assets/image/logo1.png' style="height: 50px; width: 50px; border-radius: 30% " alt=""></a>
+     <nav class="menu">
+      <ul>
+          <li *ngIf="isLoggedIn$ | async">
+              <a (click)="info()">You are connected as: {{username$ | async}}</a>
+            </li>
+        <li>
+          <a routerLink="bet">Paris Sportif</a>
+        </li>
+        <li>
+            <a routerLink="resultat">Résultats</a>
+          </li>
+          <li>
+              <a routerLink="actualite">Actualité</a>
+            </li>
+            <li *ngIf="isLoggedOut$ | async">
+                <a routerLink="actualite" (click)="loginPressed()">Login</a>
+              </li>
+              <li *ngIf="isLoggedOut$ | async">
+                  <a routerLink="auth/register" (click)="registerPressed()">Register</a>
+                </li>
+                <li *ngIf="isLoggedIn$ | async">
+                    <a routerLink="auth/login" (click)="logout()">Logout</a>
+                  </li>
+      </ul>
+     </nav>
+     
+        <nav class="responsive-menu navbar-dark bg-transparent navbar-expand-lg">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" style="border-color: green; border: green solid 3px">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="margin-top: 0px">
+              <ul class="navbar-nav">
+                  <li *ngIf="isLoggedIn$ | async" class="nav-item active">
+                      <a routerLink="userInfo/Lewa67" class="nav-link">You are connected as: {{username$ | async}}</a>
+                    </li>
+                <li class="nav-item">
+                  <a routerLink="bet" class="nav-link">Paris Sportif</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="resultat" class="nav-link">Résultats</a>
+                  </li>
+                  <li class="nav-item">
+                      <a routerLink="actualite" class="nav-link">Actualité</a>
+                    </li>
+                    <li *ngIf="isLoggedOut$ | async" class="nav-item">
+                        <a routerLink="auth/login" class="nav-link" (click)="loginPressed()">Login</a>
+                      </li>
+                      <li *ngIf="isLoggedOut$ | async" class="nav-item">
+                          <a routerLink="auth/register" class="nav-link" (click)="registerPressed()">Register</a>
+                        </li>
+                        <li *ngIf="isLoggedIn$ | async" class="nav-item logout">
+                            <a routerLink="auth/login" class="nav-link" (click)="logout()">Logout</a>
+                          </li>
+
+              </ul>
+            </div>
+          </nav>
+   
+
+     
+    </div>
+    <div class="clearfix"></div>
+
+  </div>
+  <router-outlet (scroll)="print($event)"></router-outlet>
+  

@@ -1,0 +1,12 @@
+<section class="section">
+    <h1>List of User</h1>
+
+    <li class="list-group-item d-flex justify-content-between align-items-center"*ngFor="let user of users">
+       <a [routerLink]="['/userInfo', user.username]"> {{user.username}}</a>
+      <span class="badge badge-primary badge-pill">{{user.roles[0]}}</span>
+      <span class="badge badge-primary badge-pill">{{user.roles[1]}}</span>
+      <p *ngIf="user.state!=''">{{user.state}}</p>
+      <button class="btn btn-outline-danger"  (click)="delete(user.username)">Delete</button>
+    </li>
+</section>
+

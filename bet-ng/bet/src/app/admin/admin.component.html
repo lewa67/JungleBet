@@ -1,0 +1,40 @@
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                    <div class="btn-group-vertical">
+          <h6 style="width: 100%; text-align: center;">EUROPE</h6>
+          <button type="button" class="btn btn-secondary" #button1 (click)="sort(button1.innerHTML)">Ligue1</button>
+          <button type="button" class="btn btn-secondary" #button2 (click)="sort(button2.innerHTML)">Bundesliga</button>
+          <button type="button" class="btn btn-secondary" #button3 (click)="sort(button3.innerHTML)">Premier League</button>
+          <button type="button" class="btn btn-secondary"#button4 (click)="sort(button4.innerHTML)">Liga</button>
+          <button type="button" class="btn btn-secondary"#button5 (click)="sort(button5.innerHTML)">Champions League</button>
+          
+          <h6 style="width: 100%; text-align: center;">International</h6>
+          <button type="button" class="btn btn-secondary" #button6 (click)="sort(button6.innerHTML)">CAN</button>
+                          </div>
+        
+            </div>
+        <div class="col-md-6">
+                <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex " style="flex-direction:row; justify-content: space-between;" *ngFor="let bet of bets; let i=index">
+                            <p class="d-inline"><mat-icon>sports_soccer</mat-icon> &nbsp;<span style="font-weight: bold;">{{bet.teams[0]}}-{{bet.teams[1]}} </span> {{bet.competition}}-{{bet.country}}</p>
+                            
+                            <div class="btn-group my-auto w-25"   role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-outline-success" (click)="betSelect1(bet,i)" [disabled]="bet.button2Clicked || bet.button3Clicked">{{bet.quotation[0]}}</button>
+                                    <button type="button" class="btn btn-outline-success"(click)="betSelect2(bet,i)"   [disabled]="bet.button1Clicked || bet.button3Clicked" >{{bet.quotation[1]}}</button>
+                                    <button type="button" class="btn btn-outline-success" (click)="betSelect3(bet,i)" [disabled]="bet.button1Clicked || bet.button2Clicked" >{{bet.quotation[2]}}</button>
+                                    <button type="button" class="btn btn-danger" (click)="delete(bet)" ><mat-icon>delete</mat-icon></button>
+        
+                            </div>
+                           
+                             
+                            
+        
+                        </li>
+                        
+                      </ul>
+        
+        </div>
+
+        </div>
+        </div>

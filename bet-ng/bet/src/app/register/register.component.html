@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <h5 class=" mb-2" style="text-align: center" >Formulaire Utilisateur</h5>
+<form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="w-50 mx-auto mt-3">
+ <div class="row mb-3">
+     <div class="col" >
+            <input type="text" formControlName="firstname" class="form-control" placeholder="First name" [ngStyle]="{'border-color': userForm.controls.firstname.status=='INVALID' ? '#f79c9c':'#b3f3a2',' box-shadow':userForm.controls.firstname.status=='INVALID' ? '0 0 1px #f79c9c':'0 0 1px #b3f3a2', 'border-width':'2px' }" >
+     </div>
+     <div class="col">
+            <input type="text" formControlName="lastname" class="form-control" placeholder="Last name" [ngStyle]="{'border-color': userForm.controls.lastname.status=='INVALID' ? '#f79c9c':'#b3f3a2',' box-shadow':userForm.controls.lastname.status=='INVALID' ? '0 0 1px #f79c9c':'0 0 1px #b3f3a2', 'border-width':'2px' }" >
+     </div>
+   
+ </div>
+ <div class="row mb-3">
+     <div class="col">
+            <input type="text" formControlName="address" class="form-control" placeholder="Adress" [ngStyle]="{'border-color': userForm.controls.address.status=='INVALID' ? '#f79c9c':'#b3f3a2',' box-shadow':userForm.controls.address.status=='INVALID' ? '0 0 1px #f79c9c':'0 0 1px #b3f3a2', 'border-width':'2px' }">
+
+     </div>
+
+ </div>
+ <div class="row mb-3">
+     <div class="col">
+            <input type="text" formControlName="city" class="form-control" placeholder="City" [ngStyle]="{'border-color': userForm.controls.city.status=='INVALID' ? '#f79c9c':'#b3f3a2',' box-shadow':userForm.controls.city.status=='INVALID' ? '0 0 1px #f79c9c':'0 0 1px #b3f3a2', 'border-width':'2px' }">
+     </div>
+     <div class="col">
+            <input type="text" formControlName="country" class="form-control" placeholder="Country" [ngStyle]="{'border-color': userForm.controls.country.status=='INVALID' ? '#f79c9c':'#b3f3a2',' box-shadow':userForm.controls.country.status=='INVALID' ? '0 0 1px #f79c9c':'0 0 1px #b3f3a2', 'border-width':'2px' }" >
+        </div>
+        
+
+ </div>
+ <div class="col-6 mx-auto mb-3">
+              <input type="text" formControlName="username" class="form-control" placeholder="Username" [ngStyle]="{'border-color': userForm.controls.username.status=='INVALID' ? '#f79c9c':'#b3f3a2',' box-shadow':userForm.controls.username.status=='INVALID' ? '0 0 1px #f79c9c':'0 0 1px #b3f3a2', 'border-width':'2px' }" >
+              </div>
+
+     
+ <div class="col-6 mx-auto mb-3">
+              <input type="password" formControlName="password" class="form-control" placeholder="Password" [ngStyle]="{'border-color': userForm.controls.password.status=='INVALID' ? '#f79c9c':'#b3f3a2',' box-shadow':userForm.controls.password.status=='INVALID' ? '0 0 1px #f79c9c':'0 0 1px #b3f3a2', 'border-width':'2px' }">
+              <p *ngIf="userForm.controls.password.status=='INVALID'" style="color: red"> <small>A password should have 8 characters with at least 1 number, 1 uppercase, 1 lowercase, 1 special character  </small>   </p>
+              </div>
+
+       
+ <div class="row">
+     <div class="col-6 mx-auto">
+      <button type="submit" class="w-100  btn btn-primary">Submit</button>
+     </div>
+
+ </div>
+</form>
+</div>   

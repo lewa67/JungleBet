@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 info">
+                <h3>{{username.toUpperCase()}} ACCOUNT!</h3>
+                <div class="w-50"  *ngIf="!roles.includes('Admin')">
+                        <span class="badge badge-secondary">{{roles[0]}}</span>
+                </div>
+               
+                <div *ngIf="roles.includes('Admin')">
+                        <p>Roles:  <button class="btn btn-outline-primary btn-sm"*ngIf ="!isARole('Admin')" (click)="addRole(user.username,'Admin')"><mat-icon >add_circle</mat-icon>
+                            Admin</button>
+                            <button class="btn btn-outline-primary btn-sm"*ngIf ="isARole('Admin')" (click)="deleteRole(user.username,'Admin')"><mat-icon >clear</mat-icon>
+                                Admin</button>
+                            <button class="btn btn-outline-primary btn-sm" *ngIf ="!isARole('Bettor')" (click)="addRole(user.username,'Bettor')"><mat-icon >add_circle</mat-icon>
+                                Bettor</button> 
+                                <button class="btn btn-outline-primary btn-sm" *ngIf ="isARole('Bettor')" (click)="deleteRole(user.username,'Bettor')"><mat-icon >clear</mat-icon>
+                                    Bettor</button> </p>
+                </div>
+            
+        </div>
+        <div class="col-md-4" style="overflow-y: auto; height: 450px">
+                <div class=" bg-light mr-2 mb-4" style="border: solid 2px; border-radius: 3px"  *ngFor="let ticket of user.betsHistory; let i=index">
+                    
+                            <h6>Ticket {{ticket._id}}</h6>
+                            <div *ngFor="let result of ticket.results">
+                            <p class="d-inline mr-3"><small><strong>{{result.bet.teams[0]}}-{{result.bet.teams[1]}}</strong></small></p>
+                            <p class="d-inline mr-3" style="color: green"><small> <strong>{{result.winner}}</strong> </small> </p>
+                            <p class="d-inline mr3" *ngIf="result.score.length==2"><small> <strong>{{result.score[0]}}-{{result.score[1]}}</strong> </small> </p>
+                            <p class="d-inline mr-3" *ngIf="result.score.length!=2"><small> <strong>A Venir ...</strong> </small> </p>
+                            <p class="d-inline mr-3" *ngIf="result.finalWinner==result.winner" style="color: green"><small> <img src="https://icon-library.net/images/validate-icon/validate-icon-3.jpg" alt="" style="width: 3%; height: 3%;"> <strong>Win</strong> </small> </p>
+                            <p class="d-inline " *ngIf="result.finalWinner!=result.winner && result.finalWinner!=undefined" style="color: red"><small> <img src="http://mytourdumonde.net/wp-content/uploads/Croix-rouge-erreur.png" alt="" style="width: 3%; height: 3%;"> <strong>Lost</strong> </small> </p>
+                            
+
+                            </div>
+                           
+                            
+                            <div class="bg-dark" style="color: white">
+                                   <small><p>Mise Totale: <span style="background-color: green; border-radius: 2px">{{ticket.miseTotale}} Euros</span></p></small> 
+                                  <small><p>Cote Totale: <span style="background-color: green; border-radius: 2px">{{ticket.totalQuotation}}</span></p></small>  
+                                   <small><p>Potentiel Gain: <span style="background-color: green; border-radius: 2px">{{ticket.totalGain}} Euros</span></p></small> 
+                                   <div *ngIf="ticket.isTicketWin">
+                                        <img class="ml-auto" src="https://icon-library.net/images/validate-icon/validate-icon-3.jpg" alt="" style="width: 20%; height: 20%;" > <strong>TICKET WIN !!</strong>
+
+                                   </div>
+                                   <div *ngIf="ticket.isTicketWin==undefined">
+                                        <img class="ml-auto" src="https://universalcommercialcapital.com/wp-content/uploads/2017/05/pending-2.png" alt="" style="width: 20%; height: 20%;" >
+
+                                   </div>
+                                   <div *ngIf="ticket.isTicketWin==false">
+                                        <img class="ml-auto" src="http://mytourdumonde.net/wp-content/uploads/Croix-rouge-erreur.png" alt="" style="width: 20%; height: 20%;" >  <strong>Even the Best Lost !</strong>
+
+                                   </div>
+                    
+                            </div>
+<div>
+    
+</div>
+                           
+                        
+                      </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+

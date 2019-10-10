@@ -1,0 +1,21 @@
+.mat-tab-labels{
+    flex-direction: row;
+    justify-content: center;
+   
+}
+
+
+.auth{
+    position: relative; 
+    top:100px;
+}
+
+@media screen and (max-width: 750px){
+    .auth{
+        top: 200px;
+    }
+}
+/* .mat-tab-label{
+    background-color: white;
+    color: black;
+} */

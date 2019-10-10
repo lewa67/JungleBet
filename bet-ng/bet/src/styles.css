@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+body{
+    background-image: url('./assets/image/audience-bg.jpg')
+}

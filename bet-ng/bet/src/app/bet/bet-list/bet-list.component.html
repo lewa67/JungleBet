@@ -1,0 +1,163 @@
+<section class="bet">
+        <div class="container-fluid">
+                <div class="row w-100">
+                    <div class="col-md-3 champs">
+                            <div class="btn-group-vertical">
+                  <button type="button" class="btn btn-secondary bg-light" style="color: black"> Championnats Européens</button>
+                  <button type="button" class="btn btn-secondary" #button1 (click)="sort(button1.innerHTML)">Ligue 1</button>
+                  <button type="button" class="btn btn-secondary" #button2 (click)="sort(button2.innerHTML)">Bundesliga</button>
+                  <button type="button" class="btn btn-secondary" #button3 (click)="sort(button3.innerHTML)">Premier League</button>
+                  <button type="button" class="btn btn-secondary"#button4 (click)="sort(button4.innerHTML)">Liga</button>
+                  <button type="button" class="btn btn-secondary"#button5 (click)="sort(button5.innerHTML)">Serie A</button>
+                
+                  <button type="button" class="btn btn-secondary bg-light" style="color: black">International</button>
+                
+                  <button type="button" class="btn btn-secondary" #button6 (click)="sort(button6.innerHTML)">Champions League</button>
+                                  </div>
+                
+                    </div>
+
+                   
+                    
+                    <div class="col-md-6" style="background-color: rgba(250,250,250,0.8); border-radius: 5px; overflow-y: auto; height: 400px"> 
+                        <div class="w-50">
+                                <h3 style="color:grey">{{(paris$ | async )[0].competition}}-{{(paris$ | async )[0].country.toUpperCase()}}</h3>
+                        </div>
+                            <table class="table"  style="border-top: none">
+                                    <ng-container *ngFor="let date of dateOfMatches">
+                                            <thead>
+                                                    <tr>
+                                                        <th colspan="4">{{date}}</th>
+                                                    </tr>
+                                                </thead><tr data-matchId="3111743" class="" *ngFor="let bet of (paris$ | async)">
+                                                    <ng-container *ngIf="bet.dateOfMatch==date">
+                                                            <td >
+                                                                    <mat-icon>sports_soccer</mat-icon>  {{bet.teams[0]}} -  {{bet.teams[1]}}
+                                                            </td>
+                                                            <td> <div class="btn-group btn-group-sm w-100"   role="group" aria-label="Basic example">
+                                                                    <button type="button" class="btn btn-outline-success w-100" (click)="betSelect1(bet,i)" [disabled]="bet.button2Clicked || bet.button3Clicked">{{bet.quotation[0]}}</button>
+                                                                    <button type="button" class="btn btn-outline-success w-100"(click)="betSelect2(bet,i)"   [disabled]="bet.button1Clicked || bet.button3Clicked" >{{bet.quotation[1]}}</button>
+                                                                    <button type="button" class="btn btn-outline-success w-100" (click)="betSelect3(bet,i)" [disabled]="bet.button1Clicked || bet.button2Clicked" >{{bet.quotation[2]}}</button>
+                                        
+                                                            </div></td>
+                                                    </ng-container>
+                                                    
+                                                    </tr>
+                                    </ng-container>
+                                       
+                                            </table>
+                    </div>
+                <!-- <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <ng-container *ngFor="let date of dateOfMatches">
+                                <div class="w-50 mx-auto mt-3">
+                                   <p class="bg-dark" style="text-align: center; border: 1px solid;color: aliceblue;size: 20px">{{date}}</p> 
+                                </div>
+                                
+                                <ng-container *ngFor="let bet of bets; let i=index">
+                                        <li class="list-group-item d-flex " style="flex-direction:row; justify-content: space-between;" *ngIf="bet.dateOfMatch==date">
+                                                <p class="d-inline"><mat-icon>sports_soccer</mat-icon> &nbsp;<span style="font-weight: bold;">{{bet.teams[0]}}-{{bet.teams[1]}} </span> {{bet.competition}}-{{bet.country}}</p>
+                                                
+                                                <div class="btn-group my-auto w-25"   role="group" aria-label="Basic example">
+                                                        <button type="button" class="btn btn-outline-success" (click)="betSelect1(bet,i)" [disabled]="bet.button2Clicked || bet.button3Clicked">{{bet.quotation[0]}}</button>
+                                                        <button type="button" class="btn btn-outline-success"(click)="betSelect2(bet,i)"   [disabled]="bet.button1Clicked || bet.button3Clicked" >{{bet.quotation[1]}}</button>
+                                                        <button type="button" class="btn btn-outline-success" (click)="betSelect3(bet,i)" [disabled]="bet.button1Clicked || bet.button2Clicked" >{{bet.quotation[2]}}</button>
+                            
+                                                </div>
+                                               
+                                                 
+                                                
+                            
+                                            </li >
+                                </ng-container>
+                                   
+                            </ng-container>
+                               
+                                
+                              </ul>
+                
+                </div> -->
+                
+                <div class="col-md-3">
+                    <div class="sticky-top">
+                            <img src="https://www.cpmcdn.com/fbcbr.com/saved-2.jpg" alt="" *ngIf="ticketSaved" class="w-100">
+                            <div class="card bg-light mb-3" style="max-width: 18rem;" *ngIf="!ticketSaved">
+                                    <div class="card-header bg-light d-flex" style="flex-direction: row;justify-content: space-between;">{{(betSelected$ | async).length}} paris Selectionné  <span class="glyphicon glyphicon-remove"></span></div>
+                                    <div class="card-body" *ngIf="(betSelected$ | async).length==0">
+                                      <p class="card-text">Ajoutez des paris en cliquant sur les cotes</p>
+                                    </div>
+                    
+                               <ng-container *ngFor="let b of (betSelected$ | async)">
+                    
+                               
+                                    <div class=" mt-1 card-body bg-light w-100" style="border-style: solid;" *ngIf="b.clicked && !ticketSaved">
+                                            <p style="border-bottom: solid;" ><mat-icon>sports_soccer</mat-icon> {{b.teams[0]}}-{{b.teams[1]}}  <a style="color: black" (click)="removeBet(b)"><mat-icon>cancel_presentation</mat-icon></a> </p>
+                                            <p>Résultats</p>
+                                            <div class="d-flex"  style="flex-direction: row;justify-content: space-between;">
+                                                <p> <strong>{{b.winner}}</strong> </p>
+                                                <p>{{b.winingbet}}</p>
+                                            </div>
+                                            </div>
+                                        </ng-container>
+                                
+                                    <!-- <div class=" mt-1    card-body bg-light w-100" style="border-style: solid;">
+                                    <p style="border-bottom: solid;" ><mat-icon>sports_soccer</mat-icon>Strasbourg-PSG</p>
+                                    <p>Résultats</p>
+                                    <div class="d-flex"  style="flex-direction: row;justify-content: space-between;">
+                                        <p> <strong>Strasbourg</strong> </p>
+                                        <p>2.9</p>
+                                    </div>
+                                    </div>
+                                    <div class=" mt-1 card-body bg-light w-100" style="border-style: solid;">
+                                            <p style="border-bottom: solid;" ><mat-icon>sports_soccer</mat-icon>Strasbourg-PSG</p>
+                                            <p>Résultats</p>
+                                            <div class="d-flex"  style="flex-direction: row;justify-content: space-between;">
+                                                <p> <strong>Strasbourg</strong> </p>
+                                                <p>2.9</p>
+                                            </div>
+                                            </div> -->
+                    
+                                    <div class="card-body bg-dark" style="color: white ;">
+                                        <div class="d-flex" style="flex-direction: row;justify-content: space-between;">
+                                         <p>
+                                             Cote Total 
+                                         </p>
+                                         <p>
+                                            {{totalQuotation.toFixed(2)}}
+                                            </p>
+                                                              </div>
+                                        <div class="d-flex" style="flex-direction: row;justify-content: space-between;">
+                                                <p>
+                                                        Mise
+                                                    </p>
+                                            <input class="w-25 h-50" type="number"  [(ngModel)]="mise">
+                                        
+                                        </div>
+                                        <div class="d-flex" style="flex-direction: row;justify-content: space-between;" *ngIf="mise!=undefined">
+                                         <p>
+                                          Gains Potentiel 
+                                         </p>
+                                          
+                                         <p>
+                                                {{(mise*totalQuotation).toFixed(2)}} Euros
+                                         </p>
+                                        </div>
+                                        <button class="btn btn-warning" (click)="registerBet()"><strong>Pariez</strong> </button>
+                    
+                                    </div>
+                                  </div>
+                                  <div class="alert alert-warning" role="alert" *ngIf="pleaseLogin">
+                                    Please Login!
+                                  </div>
+                                  <div class="alert alert-warning" role="alert" *ngIf="pleaseNotForget">
+                                    Do not forget to set your mise and to select at least one bet !
+                                  </div>
+                    
+                    </div>
+                      
+                </div>
+                
+                </div>
+                </div>
+</section>
+
