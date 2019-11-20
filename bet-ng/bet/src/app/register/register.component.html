@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <h5 class=" mb-2" style="text-align: center" >Formulaire Utilisateur</h5>
-<form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="w-50 mx-auto mt-3">
+<form (ngSubmit)="onSubmit()" [formGroup]="userForm" class="w-50 mx-auto mt-3" *ngIf="!register">
  <div class="row mb-3">
      <div class="col" >
             <input type="text" formControlName="firstname" class="form-control" placeholder="First name" [ngStyle]="{'border-color': userForm.controls.firstname.status=='INVALID' ? '#f79c9c':'#b3f3a2',' box-shadow':userForm.controls.firstname.status=='INVALID' ? '0 0 1px #f79c9c':'0 0 1px #b3f3a2', 'border-width':'2px' }" >
@@ -45,4 +45,6 @@
 
  </div>
 </form>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Commons-emblem-success.svg/1024px-Commons-emblem-success.svg.png" alt="" *ngIf="register" style="height: 250px;width: 250px; display: block;" class="mx-auto">
+
 </div>   

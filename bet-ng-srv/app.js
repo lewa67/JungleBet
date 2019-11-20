@@ -127,10 +127,10 @@ console.log("Debut de scrapping...")
 Bet.find().exec().then(user=>console.log(user[0]));
 // scrapper();
 // scrapperWinamax();
-setInterval(scrapper,1000*30*60)
+// setInterval(scrapper,1000*30*60)
 setInterval(scoreScrapper,1000*30*60)
 // scrapper()
-// scrapper()
+scrapper()
 // scoreScrapper()
 
 mongoose.connect('mongodb://localhost:27017/betApp', { useNewUrlParser: true });

@@ -37,9 +37,9 @@ export class TokenInterceptor implements HttpInterceptor{
 // Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
 // Accept-Encoding: gzip, deflate
 // 
-// Origin: http://localhost:4200
+// Origin: http://54.171.173.116:4200
 // Connection: keep-alive
-// Referer: http://localhost:4200/bet
+// Referer: http://54.171.173.116:4200/bet
 // If-None-Match: W/"75b-8zzo/k7nbZNebtF7jJTOLDV85W4"
 // Cache-Control: max-age=0
 
@@ -49,8 +49,8 @@ export class TokenInterceptor implements HttpInterceptor{
 // Accept: application/json, text/plain, */*
 // Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
 // Accept-Encoding: gzip, deflate
-// Origin: http://localhost:4200
+// Origin: http://54.171.173.116:4200
 // Connection: keep-alive
-// Referer: http://localhost:4200/bet
+// Referer: http://54.171.173.116:4200/bet
 // Cache-Control: max-age=0
 // If-None-Match: W/"75b-8zzo/k7nbZNebtF7jJTOLDV85W4"

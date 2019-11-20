@@ -32,7 +32,7 @@ auth=  (req, res, next)=> {    passport.authenticate('local', {session: false,fa
            req.error="User doesn't exist"
            console.log(req.error)
        }else{
-        const token=jwt.sign({_id: user._id,username:user.username,roles: user.roles}, privateKey,{ algorithm: 'RS256', expiresIn: 120})
+        const token=jwt.sign({_id: user._id,username:user.username,roles: user.roles}, privateKey,{ algorithm: 'RS256', expiresIn: "1d"})
     
        
        user.save();

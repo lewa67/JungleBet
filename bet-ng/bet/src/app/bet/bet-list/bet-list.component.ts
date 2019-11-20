@@ -33,7 +33,8 @@ export class BetListComponent implements OnInit {
   pleaseNotForget: boolean=false;
   ticketSaved: boolean=false;
   dateOfMatches:string[]=[];
-  compet=""
+  competi="Ligue 1";
+  months: string[]=["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
   
   constructor(private httpClient: HttpClient,private betService: BetService,private renderer: Renderer2, private authService: AuthService, private router: Router, private route:ActivatedRoute, private betEntityService: BetEntityService,private store: Store<AuthState>) { }
 
@@ -46,6 +47,7 @@ export class BetListComponent implements OnInit {
   //     }
   // })
 
+  console.log("DATTTETEEEE:", new Date(2019,9,19))
   this.store.subscribe(state=>{
     if(state["auth"].user==undefined){
       this.router.navigate(["/403"])
@@ -73,7 +75,20 @@ export class BetListComponent implements OnInit {
       if(value!=undefined) {return self.indexOf(value) === index;}
       
   }
-    this.dateOfMatches=this.dateOfMatches.filter(onlyUnique)
+    this.dateOfMatches=this.dateOfMatches.filter(onlyUnique).sort((a,b)=>{
+      let aTab=a.split(" ");
+      let bTab=b.split(" ");
+      console.log(aTab,bTab)
+      console.log(aTab[2],bTab[2])
+      if(aTab[2]!=bTab[2]){
+        console.log("Mois",this.months.indexOf(aTab[2]),this.months.indexOf(bTab[2]))
+      return   this.months.indexOf(aTab[2])-this.months.indexOf(bTab[2])
+      }else {
+        console.log("Jour",parseInt(aTab[1]),parseInt(bTab[1]))
+        return parseInt(aTab[1])-parseInt(bTab[1])
+      }
+    })
+    console.log(this.dateOfMatches)
  })
   //   this.httpClient.get(`http://localhost:3000/api/v1/bet?competition=Ligue 1`).subscribe((res:any)=>{
   //     this.compet="Ligue 1-France"
@@ -134,6 +149,9 @@ export class BetListComponent implements OnInit {
       
     // })
     
+    
+   this.competi=compet
+   
    this.paris$= this.betEntityService.entities$.pipe(map(bets=>{
       return bets.filter((match: Bet)=>{
         return match.score.length==0 && match.competition==compet
@@ -150,12 +168,24 @@ export class BetListComponent implements OnInit {
         if(value!=undefined) {return self.indexOf(value) === index;}
         
     }
-      this.dateOfMatches=this.dateOfMatches.filter(onlyUnique)
+      this.dateOfMatches=this.dateOfMatches.filter(onlyUnique).sort((a,b)=>{
+        let aTab=a.split(" ");
+        let bTab=b.split(" ");
+        console.log(aTab,bTab)
+        console.log(aTab[2],bTab[2])
+        if(aTab[2]!=bTab[2]){
+          console.log("Mois",this.months.indexOf(aTab[2]),this.months.indexOf(bTab[2]))
+        return   this.months.indexOf(aTab[2])-this.months.indexOf(bTab[2])
+        }else {
+          console.log("Jour",parseInt(aTab[1]),parseInt(bTab[1]))
+          return parseInt(aTab[1])-parseInt(bTab[1])
+        }
+      })
    })
     // , tap()
 
   
-console.log("datteee",this.dateOfMatches)
+console.log("datteee",this.dateOfMatches.length)
 
   }
 
@@ -365,7 +395,7 @@ console.log("datteee",this.dateOfMatches)
         return  bet.winingbet
        })
        
-       this.httpClient.post(`http://localhost:3000/api/v1/betHistory?username=${this.authService.getUser()}`,{bets:this.betSelected,totalQuotation: this.totalQuotation.toFixed(2),miseTotale: this.mise, totalGain:(this.mise*this.totalQuotation).toFixed(2),winners:winners,winingbets:winingbets}).subscribe(user=>{
+       this.httpClient.post(`http://localhost:3000/api/v1/betHistory?username=${this.authService.getUser()}`,{bets:bets,totalQuotation: this.totalQuotation.toFixed(2),miseTotale: this.mise, totalGain:(this.mise*this.totalQuotation).toFixed(2),winners:winners,winingbets:winingbets}).subscribe(user=>{
        this.ticketSaved=true;
        setTimeout(()=>{this.ticketSaved=false;
        location.reload()},3000)

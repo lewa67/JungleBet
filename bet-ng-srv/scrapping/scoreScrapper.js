@@ -4,7 +4,7 @@ const User=require('../auth/model/user')
 const Bet= Bets[0];
 cheerio=require('cheerio')
 scrapperScore=(async ()=>{
-    countries=[{"country":"france","matchs":[],"competition":"Ligue 1"},{"country":"espagne","matchs":[],"competition":"Liga"},{"country":"italie","matchs":[],"competition":"Serie A"},{"country":"allemagne","matchs":[],"competition":"Bundesliga"},{"country":"angleterre","matchs":[],"competition":"Premier League"},{"country":"europe/ligue-des-champions-uefa","matchs":[],"competition":"Champions League"}]
+    countries=[{"country":"france","matchs":[],"competition":"Ligue 1",link: "france/ligue-1/"},{"country":"espagne","matchs":[],"competition":"Liga",link: "espagne/primera-division/"},{"country":"italie","matchs":[],"competition":"Serie A",link:"italie/serie-a/"},{"country":"allemagne","matchs":[],"competition":"Bundesliga",link:"allemagne/bundesliga-1/"},{"country":"angleterre","matchs":[],"competition":"Premier League",link:"angleterre/barclays-premiership-premier-league/"},{"country":"Europe","matchs":[],"competition":"Champions League",link:"europe/ligue-des-champions-uefa/"},{"country":"Europe","matchs":[],"competition":"Qualifs EURO",link:"europe/ec-qualification/"}]
     let hrefs=[]
     for(let compet of countries){
         team1="";
@@ -14,7 +14,7 @@ scrapperScore=(async ()=>{
         competition="";
         quotation=[];
         let bet;
-    $=cheerio.load(await rp(`https://www.matchendirect.fr/${compet.country}/`))
+    $=cheerio.load(await rp(`https://www.matchendirect.fr/${compet.link}/`))
 
     $("div[class='panel panel-info']").first().find("tbody").each(function(i,el){
     //  console.log(i)

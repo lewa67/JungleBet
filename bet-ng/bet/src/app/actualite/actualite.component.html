@@ -1,9 +1,15 @@
 <div class="container-fluid">
-        <div class="row">
+    <div class="text-center mx-auto" style="width: max-content;  border-radius: 10px" *ngIf="!loading">
+        <div class="spinner-border text-danger" role="status" style="padding: 10px; width: 100px; height: 100px;background-color: lemonchiffon;" >
+            <span class="sr-only">Loading...</span>
+          </div>
+    </div>
+   
+        <div class="row" *ngIf="loading">
           <div class="col-md-4">
               <div class="btn-group-vertical" style="overflow-y: auto">
-                  <button type="button" class="btn btn-secondary bg-light" style="color: black">Mercato</button>
-                  <button type="button" [routerLink]="['/actualite',i]"class="btn btn-secondary" #button1 (click)="sort(button1.innerHTML)" *ngFor="let article of articles; let i=index">{{article.title}}</button>
+                  <button type="button" class="btn btn-secondary bg-light" style="color: black"(click)=navigate()>Mercato</button>
+                  <button type="button" [routerLink]="['/actualite',i]"class="btn btn-secondary" #button1 (click)="scroll()" *ngFor="let article of articles; let i=index">{{article.title}}</button>
                  
                                   </div>
 

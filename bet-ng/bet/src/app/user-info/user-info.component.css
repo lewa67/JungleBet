@@ -6,7 +6,7 @@
 .info{
     background-color: rgba(250,250,250,0.8); 
     border-radius: 5px;
-    height: 100px
+    height: fit-content
 }
 
 @media screen and (max-width: 750px){

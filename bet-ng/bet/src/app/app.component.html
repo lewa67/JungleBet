@@ -140,9 +140,12 @@
      </nav>
      
         <nav class="responsive-menu navbar-dark bg-transparent navbar-expand-lg">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" style="border-color: green; border: green solid 3px">
-              <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" style="border-color: yellowgreen; border: yellowgreen solid 3px" (click)="toggle()" *ngIf="!clicked" >
+              <span   class="navbar-toggler-icon"></span>
             </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" style="border-color: yellowgreen; border: yellowgreen solid 3px" (click)="toggle()" *ngIf="clicked" >
+                <span> <mat-icon> close </mat-icon></span>
+              </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01" style="margin-top: 0px">
               <ul class="navbar-nav">
                   <li *ngIf="isLoggedIn$ | async" class="nav-item active">

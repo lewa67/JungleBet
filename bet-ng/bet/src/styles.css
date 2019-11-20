@@ -3,6 +3,16 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
-body{
-    background-image: url('./assets/image/audience-bg.jpg')
+
+.bg{
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw15_oQ6IZOf3bn6AvvHGkRKoh2ZPex7ItdqMkA6NFkq3LSq7_') repeat;
+    background-size: 30px 30px;
+   
+
+
+
+}
+
+@media screen and (max-width: 750px){
+   
 }

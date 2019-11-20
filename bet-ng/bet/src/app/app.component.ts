@@ -26,6 +26,7 @@ export class AppComponent  implements OnInit{
   userCurrent: any;
   isLoggedIn$: Observable<boolean>
   isLoggedOut$: Observable<boolean>
+  clicked: boolean=false;
   @ViewChild("nav",{static: true}) menu: ElementRef;
 
   
@@ -50,8 +51,7 @@ ngOnInit(){
 //   })
 // })
 window.addEventListener("scroll",()=>{
-  console.log(window.scrollY)
-  console.log(this.menu)
+ 
   if(window.scrollY>104){
     this.renderer.addClass(this.menu.nativeElement,"green")
   } else if(this.menu.nativeElement.classList.contains('green')){
@@ -147,6 +147,10 @@ this.isLoggedOut$ = this.store
    this.http.post(`http://localhost:3000/auth/checkToken`, {username:this.authService.getUser, token: this.authService.getToken}).subscribe(res=>{
      console.log(res)
    })
+  }
+
+  toggle(){
+    this.clicked=!this.clicked
   }
 
 info(){
